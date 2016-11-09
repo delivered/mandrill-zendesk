@@ -1,0 +1,39 @@
+<div class="app_body">
+  <div>
+    {{#if messages}}
+    <h3>{{messages.length}} messages in the last 30 days</h3>
+    {{#each messages}}
+      <table class="table table-striped table-bordered">
+        <tr>
+          <th>subject</th>
+          <td>{{this.subject}}</td>
+        </tr>
+        <tr>
+          <th>to</th>
+          <td>{{this.email}}</td>
+        </tr>
+        <tr>
+          <th>from</th>
+          <td>{{this.sender}}</td>
+        </tr>
+        <tr>
+          <th>date</th>
+          <td>{{this.formatted_send_date}}</td>
+        </tr>
+        <tr>
+          <th>opened?</th>
+          {{#if this.is_opened}}
+          <td>{{this.formatted_last_opened_date}}</td>
+          {{else}}
+          <td>never</td>
+          {{/if}}
+        </tr>
+      </table>
+    {{/each}}
+    {{else}}
+    <div class="alert alert-block">
+      <p><strong>{{t 'searchPage.exclamation'}}</strong> {{t 'searchPage.no_messages_found'}}</p>
+    </div>
+    {{/if}}
+  </div>
+</div>
